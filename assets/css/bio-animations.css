@@ -1,0 +1,445 @@
+/* Biological-Inspired SVG Patterns and Micro-Animations */
+
+/* Enhanced Membrane Animations */
+@keyframes membrane-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes protein-fold {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.95);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes dna-helix {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes mitosis {
+  0% {
+    transform: scale(1);
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(1.2);
+    border-radius: 40%;
+  }
+  75% {
+    transform: scale(1.1);
+    border-radius: 30%;
+  }
+  100% {
+    transform: scale(1) translateX(10px);
+    border-radius: 50%;
+  }
+}
+
+@keyframes enzyme-reaction {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-5px) rotate(5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) rotate(-5deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-5px) rotate(3deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes photosynthesis {
+  0% {
+    fill: var(--chlorophyll-light);
+    opacity: 0.3;
+  }
+  50% {
+    fill: var(--cytoplasm-blue);
+    opacity: 0.7;
+  }
+  100% {
+    fill: var(--nucleus-coral);
+    opacity: 0.5;
+  }
+}
+
+@keyframes cellular-respiration {
+  0% {
+    stroke-dasharray: 0 100;
+    stroke: var(--cytoplasm-blue);
+  }
+  50% {
+    stroke-dasharray: 50 100;
+    stroke: var(--nucleus-coral);
+  }
+  100% {
+    stroke-dasharray: 100 100;
+    stroke: var(--chlorophyll-light);
+  }
+}
+
+/* Animation Classes */
+.animate-membrane-ripple {
+  animation: membrane-ripple 2s ease-in-out infinite;
+}
+
+.animate-protein-fold {
+  animation: protein-fold 8s linear infinite;
+}
+
+.animate-dna-helix {
+  animation: dna-helix 6s linear infinite;
+}
+
+.animate-mitosis {
+  animation: mitosis 4s ease-in-out infinite;
+}
+
+.animate-enzyme {
+  animation: enzyme-reaction 3s ease-in-out infinite;
+}
+
+.animate-photosynthesis {
+  animation: photosynthesis 5s ease-in-out infinite alternate;
+}
+
+.animate-respiration {
+  animation: cellular-respiration 4s ease-in-out infinite;
+}
+
+/* Complex Biological Patterns */
+.cell-membrane-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 20%, var(--chlorophyll-light) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, var(--cytoplasm-blue) 1px, transparent 1px),
+    radial-gradient(circle at 40% 60%, var(--nucleus-coral) 0.5px, transparent 0.5px);
+  background-size: 30px 30px, 40px 40px, 20px 20px;
+  background-position: 0 0, 15px 15px, 8px 8px;
+  opacity: 0.1;
+}
+
+.dna-strand-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--cytoplasm-blue) 0px,
+    var(--cytoplasm-blue) 1px,
+    transparent 1px,
+    transparent 8px,
+    var(--nucleus-coral) 8px,
+    var(--nucleus-coral) 9px,
+    transparent 9px,
+    transparent 16px
+  );
+  opacity: 0.2;
+}
+
+.protein-structure-pattern {
+  background-image: 
+    conic-gradient(from 0deg at 50% 50%, 
+      var(--chlorophyll-light) 0deg, 
+      transparent 60deg,
+      var(--cytoplasm-blue) 120deg,
+      transparent 180deg,
+      var(--nucleus-coral) 240deg,
+      transparent 300deg,
+      var(--chlorophyll-light) 360deg
+    );
+  background-size: 40px 40px;
+  opacity: 0.15;
+}
+
+/* Interactive Biological Elements */
+.bio-interactive:hover .animate-membrane {
+  animation-duration: 1s;
+}
+
+.bio-interactive:hover .animate-protein-fold {
+  animation-duration: 2s;
+}
+
+/* Biological Loading States */
+.bio-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cytoplasm-blue),
+    transparent
+  );
+  animation: bio-shimmer 2s infinite;
+}
+
+@keyframes bio-shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Organic Shape Morphing */
+.organic-shape {
+  clip-path: polygon(
+    30% 0%, 
+    70% 0%, 
+    100% 30%, 
+    100% 70%, 
+    70% 100%, 
+    30% 100%, 
+    0% 70%, 
+    0% 30%
+  );
+  transition: clip-path 0.5s ease-in-out;
+}
+
+.organic-shape:hover {
+  clip-path: polygon(
+    25% 5%, 
+    75% 5%, 
+    95% 25%, 
+    95% 75%, 
+    75% 95%, 
+    25% 95%, 
+    5% 75%, 
+    5% 25%
+  );
+}
+
+/* Petri Dish Effect */
+.petri-dish {
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--albumen-white) 0%,
+    var(--chlorophyll-light) 40%,
+    var(--cytoplasm-blue) 70%,
+    var(--chlorophyll-dark) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.petri-dish::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%
+  );
+}
+
+/* Colony Growth Animation */
+.colony {
+  border-radius: 50%;
+  background: var(--nucleus-coral);
+  animation: colony-growth 3s ease-out infinite;
+}
+
+@keyframes colony-growth {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Microscope Zoom Effect */
+.microscope-zoom {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid var(--chlorophyll-dark);
+}
+
+.microscope-zoom::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg 10deg,
+    rgba(167, 211, 244, 0.1) 10deg 20deg
+  );
+  animation: microscope-rotation 20s linear infinite;
+}
+
+@keyframes microscope-rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Neural Network Pattern */
+.neural-network {
+  position: relative;
+  background: var(--albumen-white);
+}
+
+.neural-network::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, var(--cytoplasm-blue) 2px, transparent 2px),
+    radial-gradient(circle at 75% 25%, var(--nucleus-coral) 2px, transparent 2px),
+    radial-gradient(circle at 25% 75%, var(--chlorophyll-light) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--cytoplasm-blue) 2px, transparent 2px);
+  background-size: 100px 100px;
+  opacity: 0.6;
+}
+
+.neural-network::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 49%, var(--chlorophyll-light) 49%, var(--chlorophyll-light) 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, var(--cytoplasm-blue) 49%, var(--cytoplasm-blue) 51%, transparent 51%);
+  background-size: 100px 100px;
+  opacity: 0.3;
+}
+
+/* Enzyme Active Site */
+.enzyme-site {
+  position: relative;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(45deg, var(--cytoplasm-blue), var(--nucleus-coral));
+  animation: enzyme-conformational-change 4s ease-in-out infinite alternate;
+}
+
+@keyframes enzyme-conformational-change {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(0deg);
+  }
+  100% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    transform: rotate(5deg);
+  }
+}
+
+/* Virus Structure */
+.virus-capsid {
+  position: relative;
+  border-radius: 50%;
+  background: var(--nucleus-coral);
+}
+
+.virus-capsid::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    var(--cytoplasm-blue) 0deg 30deg,
+    var(--chlorophyll-light) 30deg 60deg
+  );
+  animation: virus-replication 6s linear infinite;
+}
+
+@keyframes virus-replication {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-membrane-ripple,
+  .animate-protein-fold,
+  .animate-dna-helix,
+  .animate-mitosis,
+  .animate-enzyme,
+  .animate-photosynthesis,
+  .animate-respiration,
+  .colony,
+  .microscope-zoom::before,
+  .enzyme-site,
+  .virus-capsid::before {
+    animation: none !important;
+  }
+  
+  .bio-interactive:hover .animate-membrane,
+  .bio-interactive:hover .animate-protein-fold {
+    animation: none !important;
+  }
+}

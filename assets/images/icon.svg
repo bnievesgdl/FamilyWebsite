@@ -1,0 +1,46 @@
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A3D36;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2B5A4D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="moleculeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A7D3F4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D6EBDD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF7568;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" fill="url(#bgGradient)" rx="32"/>
+  
+  <!-- Central molecular structure -->
+  <g transform="translate(96,96)">
+    <!-- Outer ring -->
+    <circle r="60" fill="none" stroke="#D6EBDD" stroke-width="3" opacity="0.7"/>
+    
+    <!-- Inner molecular bonds -->
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#A7D3F4" stroke-width="2" opacity="0.8"/>
+    <line x1="0" y1="-40" x2="0" y2="40" stroke="#A7D3F4" stroke-width="2" opacity="0.8"/>
+    <line x1="-28" y1="-28" x2="28" y2="28" stroke="#FF7568" stroke-width="2" opacity="0.6"/>
+    <line x1="28" y1="-28" x2="-28" y2="28" stroke="#FF7568" stroke-width="2" opacity="0.6"/>
+    
+    <!-- Central nucleus -->
+    <circle r="16" fill="url(#moleculeGradient)"/>
+    
+    <!-- Orbital elements -->
+    <circle cx="0" cy="-35" r="6" fill="#A7D3F4"/>
+    <circle cx="35" cy="0" r="6" fill="#FF7568"/>
+    <circle cx="0" cy="35" r="6" fill="#D6EBDD"/>
+    <circle cx="-35" cy="0" r="6" fill="#FF7568"/>
+    
+    <!-- Smaller orbital elements -->
+    <circle cx="25" cy="-25" r="4" fill="#A7D3F4" opacity="0.8"/>
+    <circle cx="25" cy="25" r="4" fill="#FF7568" opacity="0.8"/>
+    <circle cx="-25" cy="25" r="4" fill="#A7D3F4" opacity="0.8"/>
+    <circle cx="-25" cy="-25" r="4" fill="#FF7568" opacity="0.8"/>
+  </g>
+  
+  <!-- Family initials -->
+  <text x="96" y="168" font-family="serif" font-size="16" fill="#FAFDFB" text-anchor="middle" font-weight="bold">N-G</text>
+</svg>

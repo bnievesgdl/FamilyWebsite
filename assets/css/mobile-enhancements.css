@@ -1,0 +1,354 @@
+/* Mobile-First Responsive Enhancements */
+
+/* iOS Safe Area Support */
+@supports (padding: max(0px)) {
+  .safe-area-inset-top {
+    padding-top: max(var(--space-lg), env(safe-area-inset-top));
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: max(var(--space-lg), env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-inset-left {
+    padding-left: max(var(--space-md), env(safe-area-inset-left));
+  }
+  
+  .safe-area-inset-right {
+    padding-right: max(var(--space-md), env(safe-area-inset-right));
+  }
+}
+
+/* Dynamic Viewport Height for iOS */
+:root {
+  --vh: 1vh;
+}
+
+.min-h-screen-dynamic {
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.h-screen-dynamic {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Enhanced Touch Targets */
+.touch-friendly {
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-xs);
+}
+
+/* Improved Touch Feedback */
+.touch-feedback {
+  transition: all 0.1s ease;
+  transform: scale(1);
+}
+
+.touch-feedback:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/* iOS-specific input styling */
+@supports (-webkit-appearance: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--chlorophyll-light);
+    background-color: var(--albumen-white);
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: var(--space-md);
+    transition: border-color var(--transition-fast);
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--cytoplasm-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(167, 211, 244, 0.2);
+  }
+}
+
+/* Prevent zoom on inputs for iOS */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Enhanced Scroll Behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal scroll containers */
+.scroll-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-item {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Mobile Navigation Enhancements */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--albumen-white);
+  border-top: 1px solid var(--chlorophyll-light);
+  padding: var(--space-sm) var(--space-md);
+  z-index: 50;
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+}
+
+.mobile-nav.active {
+  transform: translateY(0);
+}
+
+/* Sticky Elements with Safe Areas */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: var(--albumen-white);
+  border-bottom: 1px solid var(--chlorophyll-light);
+  padding-top: max(var(--space-md), env(safe-area-inset-top));
+  z-index: 40;
+}
+
+/* Card Hover States for Touch */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .card:active {
+    transform: translateY(1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Responsive Grid Improvements */
+.responsive-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+/* Typography Adjustments for Small Screens */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+  }
+  
+  .hero {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .section {
+    padding: var(--space-xl) 0;
+  }
+}
+
+/* Gallery Masonry Mobile Optimization */
+@media (max-width: 640px) {
+  .gallery {
+    column-count: 1;
+    column-gap: var(--space-md);
+  }
+  
+  .gallery-item {
+    margin-bottom: var(--space-md);
+    break-inside: avoid;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+/* Form Improvements for Mobile */
+.mobile-form {
+  max-width: 100%;
+  padding: var(--space-md);
+}
+
+.mobile-form .form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.mobile-form label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--chlorophyll-dark);
+}
+
+.mobile-form input,
+.mobile-form textarea {
+  width: 100%;
+  border: 2px solid var(--chlorophyll-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  font-size: 16px;
+  background: var(--albumen-white);
+  transition: border-color var(--transition-fast);
+}
+
+.mobile-form input:focus,
+.mobile-form textarea:focus {
+  border-color: var(--cytoplasm-blue);
+  outline: none;
+}
+
+/* Loading States for Mobile */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--chlorophyll-light);
+  border-top-color: var(--cytoplasm-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Remove will-change after animation */
+.animation-complete {
+  will-change: auto;
+}
+
+/* Reduce Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-membrane,
+  .animate-fade-in {
+    animation: none !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --chlorophyll-dark: #000000;
+    --albumen-white: #ffffff;
+    --cytoplasm-blue: #0066cc;
+    --nucleus-coral: #cc3300;
+  }
+  
+  .card {
+    border: 2px solid var(--chlorophyll-dark);
+  }
+  
+  button,
+  .btn {
+    border: 2px solid var(--chlorophyll-dark);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .hero,
+  .mobile-nav,
+  .sticky-header,
+  .hamburger,
+  .lightbox,
+  .btn {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+    margin-bottom: 20pt;
+  }
+}

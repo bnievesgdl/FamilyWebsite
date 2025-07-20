@@ -1,0 +1,287 @@
+/* Family Website Design System - "In Vivo" Theme */
+
+:root {
+  /* Color Palette */
+  --chlorophyll-dark: #1A3D36;
+  --chlorophyll-light: #D6EBDD;
+  --cytoplasm-blue: #A7D3F4;
+  --nucleus-coral: #FF7568;
+  --albumen-white: #FAFDFB;
+  
+  /* Typography Scale */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-code: SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(26, 61, 54, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(26, 61, 54, 0.1), 0 2px 4px -1px rgba(26, 61, 54, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(26, 61, 54, 0.1), 0 4px 6px -2px rgba(26, 61, 54, 0.05);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --chlorophyll-dark: #D6EBDD;
+    --chlorophyll-light: #1A3D36;
+    --albumen-white: #0F1A17;
+    --cytoplasm-blue: #6BBFED;
+    --nucleus-coral: #FF8A7E;
+  }
+}
+
+/* Reset and Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--albumen-white);
+  color: var(--chlorophyll-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 var(--space-md) 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+}
+
+p {
+  margin: 0 0 var(--space-md) 0;
+}
+
+a {
+  color: var(--cytoplasm-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover, a:focus {
+  color: var(--nucleus-coral);
+  text-decoration: underline;
+}
+
+/* Focus states for accessibility */
+:focus {
+  outline: 2px solid var(--cytoplasm-blue);
+  outline-offset: 2px;
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 44px; /* Touch target requirement */
+  min-width: 44px;
+}
+
+.btn-primary {
+  background-color: var(--cytoplasm-blue);
+  color: var(--chlorophyll-dark);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--nucleus-coral);
+  color: var(--albumen-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--chlorophyll-dark);
+  border: 2px solid var(--chlorophyll-light);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: var(--chlorophyll-light);
+  border-color: var(--cytoplasm-blue);
+}
+
+/* Layout utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Card component */
+.card {
+  background: var(--albumen-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section-bg {
+  background-color: var(--chlorophyll-light);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+  
+  .grid-md-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-md-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-xl);
+  }
+  
+  .grid-lg-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Biological-inspired animations */
+@keyframes membrane-pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-membrane {
+  animation: membrane-pulse 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* iOS and mobile optimizations */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="The Nieves-Guadalajara Family - Heritage, Discovery, Excellence">
+    <meta name="theme-color" content="#1A3D36">
+    
+    <title>Nieves-Guadalajara Family</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
+    <link rel="stylesheet" href="assets/css/utility-classes.css">
+    <link rel="stylesheet" href="assets/css/mobile-enhancements.css">
+    <link rel="stylesheet" href="assets/css/bio-animations.css">
+    
+    <!-- Favicon and Apple touch icon -->
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header class="header">
+        <nav class="container flex justify-between items-center p-md">
+            <div class="logo">
+                <h1 class="text-lg font-bold m-0">Nieves-Guadalajara</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Background SVG Blobs -->
+            <svg class="absolute inset-0 w-full h-full z-0 animate-membrane" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="membrane-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D6EBDD;stop-opacity:0.7" />
+                        <stop offset="50%" style="stop-color:#A7D3F4;stop-opacity:0.5" />
+                        <stop offset="100%" style="stop-color:#D6EBDD;stop-opacity:0.7" />
+                    </linearGradient>
+                </defs>
+                <path d="M150,300 Q300,100 450,250 T750,200 Q900,150 1050,300 Q1000,450 850,400 Q700,500 550,450 T250,400 Q100,350 150,300 Z" fill="url(#membrane-gradient)">
+                    <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="4s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="200" cy="150" r="80" fill="var(--chlorophyll-light)" opacity="0.6">
+                    <animate attributeName="r" values="80;90;80" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="1000" cy="600" r="120" fill="var(--cytoplasm-blue)" opacity="0.4">
+                    <animate attributeName="r" values="120;135;120" dur="5s" repeatCount="indefinite"/>
+                </circle>
+                <ellipse cx="600" cy="100" rx="150" ry="80" fill="var(--chlorophyll-light)" opacity="0.5">
+                    <animateTransform attributeName="transform" type="rotate" values="0 600 100;360 600 100" dur="20s" repeatCount="indefinite"/>
+                </ellipse>
+            </svg>
+            
+            <div class="container text-center relative z-10">
+                <h1 class="font-bold text-chlorophyll-dark mb-md animate-fade-in">
+                    Nieves-Guadalajara Family
+                </h1>
+                <p class="text-xl text-chlorophyll-dark mb-xl font-medium" style="animation-delay: 0.2s;">
+                    Heritage • Discovery • Excellence
+                </p>
+                <div class="flex justify-center gap-md" style="animation-delay: 0.4s;">
+                    <a href="#members" class="btn btn-primary animate-fade-in">Meet the Family</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Members Section -->
+        <section id="members" class="section section-bg">
+            <div class="container">
+                <h2 class="text-center mb-2xl text-chlorophyll-dark">Our Family</h2>
+                
+                <div class="grid gap-xl grid-md-2 max-w-4xl m-auto">
+                    <!-- Brandon Card -->
+                    <article class="card touch-target cursor-pointer" onclick="window.location.href='brandon/'" role="button" tabindex="0" aria-label="Visit Brandon Nieves' page" onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='brandon/'}">
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full bg-cytoplasm-blue m-auto mb-md flex items-center justify-center text-4xl font-bold text-chlorophyll-dark">
+                                BN
+                            </div>
+                            <h3 class="text-chlorophyll-dark mb-sm">Brandon Nieves</h3>
+                            <p class="text-chlorophyll-dark mb-md leading-relaxed">
+                                Biotechnology professional focused on innovation in life sciences and cellular biology research.
+                            </p>
+                            <div class="flex justify-center gap-sm">
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Biotech</span>
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Research</span>
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Innovation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Angel Card -->
+                    <article class="card touch-target cursor-pointer" onclick="window.location.href='angel/'" role="button" tabindex="0" aria-label="Visit Angel Guadalajara's portfolio" onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='angel/'}">
+                        <div class="text-center">
+                            <div class="w-32 h-32 rounded-full bg-nucleus-coral m-auto mb-md flex items-center justify-center text-4xl font-bold text-albumen-white">
+                                AG
+                            </div>
+                            <h3 class="text-chlorophyll-dark mb-sm">Angel Guadalajara</h3>
+                            <p class="text-chlorophyll-dark mb-md leading-relaxed">
+                                Visual artist and creative professional specializing in contemporary photography and digital art.
+                            </p>
+                            <div class="flex justify-center gap-sm">
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Photography</span>
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Art</span>
+                                <span class="text-xs bg-chlorophyll-light text-chlorophyll-dark px-sm py-xs rounded">Creative</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section">
+            <div class="container">
+                <div class="grid gap-lg grid-md-3 max-w-6xl m-auto">
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-chlorophyll-light m-auto mb-md flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="var(--chlorophyll-dark)"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-chlorophyll-dark mb-sm">Heritage</h3>
+                        <p class="text-chlorophyll-dark leading-relaxed">
+                            Honoring our roots while building bridges between cultures and generations.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-chlorophyll-light m-auto mb-md flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="8" stroke="var(--chlorophyll-dark)" stroke-width="2" fill="none"/>
+                                <path d="M21 21L16.65 16.65" stroke="var(--chlorophyll-dark)" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="11" cy="11" r="3" fill="var(--chlorophyll-dark)"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-chlorophyll-dark mb-sm">Discovery</h3>
+                        <p class="text-chlorophyll-dark leading-relaxed">
+                            Pursuing knowledge and innovation in science, art, and human understanding.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-chlorophyll-light m-auto mb-md flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="12,2 15.09,8.26 22,9 17,14 18.18,21 12,17.77 5.82,21 7,14 2,9 8.91,8.26" fill="var(--chlorophyll-dark)"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-chlorophyll-dark mb-sm">Excellence</h3>
+                        <p class="text-chlorophyll-dark leading-relaxed">
+                            Striving for the highest standards in all our professional and personal endeavors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-chlorophyll-dark text-albumen-white">
+        <div class="container">
+            <div class="grid gap-md py-lg text-center grid-md-3 items-center">
+                <div>
+                    <p class="text-sm m-0">&copy; 2024 Nieves-Guadalajara Family</p>
+                </div>
+                <div>
+                    <p class="text-sm m-0">EST. 2020</p>
+                </div>
+                <div>
+                    <p class="text-sm m-0">Heritage • Discovery • Excellence</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" type="module" defer></script>
+</body>
+</html>

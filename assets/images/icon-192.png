@@ -1,0 +1,9 @@
+<!-- SVG placeholder for 192x192 PWA icon -->
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" fill="#1A3D36" rx="32"/>
+  <circle cx="96" cy="96" r="60" fill="none" stroke="#D6EBDD" stroke-width="4"/>
+  <circle cx="96" cy="96" r="20" fill="#A7D3F4"/>
+  <circle cx="116" cy="76" r="8" fill="#FF7568"/>
+  <circle cx="76" cy="116" r="8" fill="#FF7568"/>
+  <text x="96" y="160" font-family="serif" font-size="14" fill="#FAFDFB" text-anchor="middle" font-weight="bold">N-G</text>
+</svg>
