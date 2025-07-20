@@ -97,13 +97,15 @@
                         Get notified when I publish new posts about the intersection of real estate, biotech, and technology in Chicago.
                     </p>
                     
-                    <form class="flex flex-col sm:flex-row gap-md max-w-md m-auto">
+                    <form class="flex flex-col sm:flex-row gap-md max-w-md m-auto" action="mailto:brandon@nievesgdl.com" method="post" enctype="text/plain">
                         <input 
                             type="email" 
+                            name="email"
                             placeholder="your.email@example.com" 
                             class="flex-1 p-md border-2 border-chlorophyll-dark rounded-md focus:border-cytoplasm-blue outline-none"
                             required
                         >
+                        <input type="hidden" name="subject" value="Newsletter Subscription Request">
                         <button type="submit" class="btn btn-primary">
                             Subscribe
                         </button>
