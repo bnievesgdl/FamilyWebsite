@@ -1,7 +1,5 @@
 # Nieves-Guadalajara Family Website
 
-> Heritage • Discovery • Excellence
-
 A simple family website to showcase our individual projects and connect our online presence. This is a little project to host all of my family's websites in one place.
 
 ## 🌐 Live Website
