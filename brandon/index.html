@@ -3,137 +3,767 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Brandon Nieves - Commercial Real Estate & Biotech Community Leader">
-    <meta name="theme-color" content="#1A3D36">
+    <meta name="description" content="Brandon Nieves - Commercial Real Estate • Biotech Innovation • Professional Blog">
+    <meta name="theme-color" content="#8B4513">
     
-    <title>Brandon Nieves | Nieves-Guadalajara Family</title>
+    <title>Brandon Nieves</title>
     
-    <!-- Preconnect to Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/css/design-system.css">
-    <link rel="stylesheet" href="../assets/css/utility-classes.css">
-    <link rel="stylesheet" href="../assets/css/mobile-enhancements.css">
-    <link rel="stylesheet" href="../assets/css/bio-animations.css">
+    <style>
+        :root {
+            /* Aztec-Inspired Palette */
+            --obsidian-black: #1c1c1e;
+            --stone-gray: #2c2c2e;
+            --terracotta: #d2691e;
+            --gold-accent: #daa520;
+            --warm-white: #faf9f7;
+            --sage-green: #87a96b;
+            --burnt-orange: #cc5500;
+            --deep-bronze: #8b4513;
+            --limestone: #f5f5dc;
+            --shadow-brown: #3e2723;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Crimson Text', Georgia, serif;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.5rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--warm-white);
+            color: var(--obsidian-black);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        /* Typography */
+        .serif {
+            font-family: var(--font-serif);
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Aztec Geometric Patterns */
+        .aztec-pattern {
+            position: relative;
+            background: linear-gradient(45deg, 
+                var(--terracotta) 25%, 
+                transparent 25%), 
+            linear-gradient(-45deg, 
+                var(--terracotta) 25%, 
+                transparent 25%),
+            linear-gradient(45deg, 
+                transparent 75%, 
+                var(--gold-accent) 75%), 
+            linear-gradient(-45deg, 
+                transparent 75%, 
+                var(--gold-accent) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.1;
+        }
+        
+        .pyramid-border {
+            position: relative;
+        }
+        
+        .pyramid-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 12px solid var(--terracotta);
+        }
+        
+        .step-pattern {
+            background: linear-gradient(
+                to right,
+                var(--terracotta) 0%,
+                var(--terracotta) 10%,
+                var(--gold-accent) 10%,
+                var(--gold-accent) 20%,
+                var(--terracotta) 20%,
+                var(--terracotta) 30%,
+                var(--gold-accent) 30%,
+                var(--gold-accent) 40%,
+                var(--terracotta) 40%,
+                var(--terracotta) 50%,
+                var(--gold-accent) 50%,
+                var(--gold-accent) 60%,
+                var(--terracotta) 60%,
+                var(--terracotta) 70%,
+                var(--gold-accent) 70%,
+                var(--gold-accent) 80%,
+                var(--terracotta) 80%,
+                var(--terracotta) 90%,
+                var(--gold-accent) 90%,
+                var(--gold-accent) 100%
+            );
+            height: 4px;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--limestone);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+        }
+        
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--deep-bronze);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-logo:hover {
+            color: var(--terracotta);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--obsidian-black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            color: var(--terracotta);
+        }
+        
+        .nav-link.active {
+            color: var(--deep-bronze);
+            border-bottom: 2px solid var(--terracotta);
+            padding-bottom: 2px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--limestone) 100%);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400"><defs><pattern id="aztec" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><polygon points="20,0 40,20 20,40 0,20" fill="%23d2691e" opacity="0.1"/><polygon points="10,10 30,10 30,30 10,30" fill="%23daa520" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23aztec)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            color: var(--obsidian-black);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            margin-bottom: var(--space-lg);
+            font-weight: 500;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--stone-gray);
+            margin-bottom: var(--space-xl);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--terracotta);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-bronze);
+            transition: var(--transition-medium);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--terracotta);
+            border: 1px solid var(--terracotta);
+        }
+        
+        .btn-secondary::before {
+            background: var(--terracotta);
+        }
+        
+        .btn-secondary:hover {
+            color: var(--warm-white);
+        }
+        
+        /* Social Links */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--warm-white);
+            border: 1px solid var(--limestone);
+            text-decoration: none;
+            color: var(--obsidian-black);
+            transition: var(--transition-medium);
+            position: relative;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--terracotta);
+            transform: scaleY(0);
+            transition: var(--transition-medium);
+        }
+        
+        .social-link:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .social-link:hover {
+            background: var(--limestone);
+            transform: translateX(4px);
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            padding: var(--space-3xl) 0;
+            background: var(--warm-white);
+        }
+        
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--obsidian-black);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--step-pattern);
+        }
+        
+        .blog-post {
+            background: var(--warm-white);
+            border: 1px solid var(--limestone);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            transition: var(--transition-medium);
+        }
+        
+        .blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--step-pattern);
+        }
+        
+        .blog-post:hover {
+            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .blog-meta {
+            color: var(--terracotta);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        
+        .blog-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--obsidian-black);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+        }
+        
+        .blog-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .blog-title a:hover {
+            color: var(--terracotta);
+        }
+        
+        .blog-excerpt {
+            color: var(--stone-gray);
+            margin-bottom: var(--space-lg);
+            line-height: 1.7;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--limestone) 0%, var(--warm-white) 100%);
+            padding: var(--space-2xl);
+            border: 1px solid var(--terracotta);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--step-pattern);
+        }
+        
+        .newsletter-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--obsidian-black);
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .newsletter-description {
+            text-align: center;
+            color: var(--stone-gray);
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-md);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: var(--space-md);
+            border: 1px solid var(--limestone);
+            background: var(--warm-white);
+            color: var(--obsidian-black);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.1);
+        }
+        
+        @media (max-width: 640px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--obsidian-black);
+            color: var(--warm-white);
+            padding: var(--space-2xl) 0 var(--space-xl);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--step-pattern);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+        
+        .footer-link {
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-link:hover {
+            color: var(--terracotta);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--obsidian-black);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+            
+            .nav-menu.active {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--warm-white);
+                padding: var(--space-lg);
+                gap: var(--space-lg);
+                border-top: 1px solid var(--limestone);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
     
-    <!-- Favicon and Apple touch icon -->
+    <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
 </head>
 <body>
-    <!-- Sticky Header -->
-    <header class="header sticky top-0 bg-albumen-white z-50 border-b border-chlorophyll-light" style="height: 56px;">
-        <nav class="container flex items-center justify-between h-full">
-            <a href="../" class="flex items-center gap-sm text-chlorophyll-dark hover:text-cytoplasm-blue transition-colors" aria-label="Back to family homepage">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="font-medium">Nieves-Guadalajara</span>
-            </a>
-            
-            <!-- Navigation Tabs -->
-            <div class="flex items-center gap-md">
-                <span class="text-sm text-chlorophyll-dark font-medium border-b-2 border-cytoplasm-blue pb-1">Blog</span>
-                <a href="about/" class="text-sm text-chlorophyll-dark hover:text-cytoplasm-blue transition-colors">About</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="section bg-chlorophyll-light">
-            <div class="container text-center max-w-4xl m-auto">
-                <h1 class="font-bold text-chlorophyll-dark mb-md">Brandon Nieves</h1>
-                <p class="text-xl text-chlorophyll-dark leading-relaxed mb-lg">
-                    Commercial Real Estate • ChiTownBio Board Member<br>
-                    <span class="text-base">Sharing things I'm learning that I find interesting</span>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">Nieves-Guadalajara-Corona</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#blog" class="nav-link active">Blog</a></li>
+                <li><a href="about/" class="nav-link">About</a></li>
+                <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Brandon Nieves</h1>
+                <p class="hero-subtitle fade-in fade-in-delay-1">Commercial Real Estate • Biotech Innovation</p>
+                <p class="hero-description fade-in fade-in-delay-2">
+                    Exploring the intersection of real estate markets, biotechnology research, and community building. 
+                    Sharing insights from Chicago's commercial landscape and the evolving biotech ecosystem.
                 </p>
                 
-                <!-- Social Links -->
-                <div class="flex justify-center gap-md flex-wrap mb-lg">
-                    <a href="https://www.linkedin.com/in/nievesbrandon/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://github.com/bnievesgdl" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://www.goodreads.com/user/show/64485626-brandon-nieves" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Goodreads</a>
-                    <a href="../assets/brandon-nieves-resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Resume</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Posts -->
-        <section class="section">
-            <div class="container max-w-4xl m-auto">
-                <h2 class="text-center mb-xl text-chlorophyll-dark">Latest Posts</h2>
-                
-                <!-- Featured Post -->
-                <article class="card mb-xl">
-                    <div class="flex items-center gap-md mb-md">
-                        <time class="text-sm text-chlorophyll-dark">December 20, 2024</time>
-                    </div>
-                    
-                    <h3 class="text-chlorophyll-dark mb-md hover:text-cytoplasm-blue transition-colors">
-                        <a href="blog/welcome-to-the-intersection/">Just setting this up!</a>
-                    </h3>
-                    
-                    <p class="text-chlorophyll-dark leading-relaxed mb-md">
-                        I'll be sharing things I find interesting and am learning about.
-                    </p>
-                    
-                    <a href="blog/welcome-to-the-intersection/" class="btn btn-primary">
-                        Read More →
+                <!-- Social Links Grid -->
+                <div class="social-grid fade-in fade-in-delay-3">
+                    <a href="https://www.linkedin.com/in/nievesbrandon/" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.366C3.274 4.225 4.194 3.299 5.337 3.299C6.477 3.299 7.401 4.225 7.401 5.366C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z"/>
+                        </svg>
+                        LinkedIn
                     </a>
-                </article>
-
-                <!-- Newsletter Signup -->
-                <section class="card bg-chlorophyll-light text-center">
-                    <h3 class="text-chlorophyll-dark mb-md">Stay Updated</h3>
-                    <p class="text-chlorophyll-dark leading-relaxed mb-lg max-w-2xl m-auto">
-                        Get notified when I publish new posts about the intersection of real estate, biotech, and technology in Chicago.
-                    </p>
-                    
-                    <form class="flex flex-col sm:flex-row gap-md max-w-md m-auto" action="mailto:brandon@nievesgdl.com" method="post" enctype="text/plain">
-                        <input 
-                            type="email" 
-                            name="email"
-                            placeholder="your.email@example.com" 
-                            class="flex-1 p-md border-2 border-chlorophyll-dark rounded-md focus:border-cytoplasm-blue outline-none"
-                            required
-                        >
-                        <input type="hidden" name="subject" value="Newsletter Subscription Request">
-                        <button type="submit" class="btn btn-primary">
-                            Subscribe
-                        </button>
-                    </form>
-                    
-                    <p class="text-sm text-chlorophyll-dark mt-md opacity-75">
-                        No spam, just thoughtful insights. Unsubscribe anytime.
-                    </p>
-                </section>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-chlorophyll-dark text-albumen-white">
-        <div class="container">
-            <div class="flex flex-col md:flex-row justify-between items-center py-lg gap-md">
-                <div>
-                    <p class="text-sm m-0">&copy; 2024 Brandon Nieves</p>
-                </div>
-                <div class="flex gap-lg">
-                    <a href="about/" class="text-sm text-albumen-white hover:text-cytoplasm-blue transition-colors">
-                        About
+                    <a href="https://github.com/bnievesgdl" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z"/>
+                        </svg>
+                        GitHub
                     </a>
-                    <a href="../" class="text-sm text-albumen-white hover:text-cytoplasm-blue transition-colors">
-                        Family
+                    <a href="https://www.goodreads.com/user/show/64485626-brandon-nieves" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 2C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V4C20 2.9 19.1 2 18 2H6ZM18 20H6V4H7V13L9.5 11.5L12 13V4H18V20Z"/>
+                        </svg>
+                        Goodreads
+                    </a>
+                    <a href="../assets/brandon-nieves-resume.pdf" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z"/>
+                            <path d="M8 12H16V14H8V12ZM8 16H13V18H8V16Z"/>
+                        </svg>
+                        Resume
                     </a>
                 </div>
             </div>
         </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <h2 class="section-title slide-up">Latest Insights</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <!-- Featured Post -->
+                <article class="blog-post slide-up">
+                    <div class="blog-meta">December 20, 2024</div>
+                    <h3 class="blog-title">
+                        <a href="blog/welcome-to-the-intersection/">Just setting this up!</a>
+                    </h3>
+                    <p class="blog-excerpt">
+                        I'll be posting about things I'm learning that I find interesting. Expect posts about biotech research, 
+                        real estate observations, tech insights, and whatever else catches my curiosity.
+                    </p>
+                    <a href="blog/welcome-to-the-intersection/" class="btn">
+                        Read More
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="blog-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter slide-up">
+                <h3 class="newsletter-title">Stay Connected</h3>
+                <p class="newsletter-description">
+                    Get notified when I publish new insights about real estate markets, biotech innovations, 
+                    and the intersection of technology and community building in Chicago.
+                </p>
+                
+                <form class="newsletter-form" action="mailto:brandon@nievesgdl.com" method="post" enctype="text/plain">
+                    <input 
+                        type="email" 
+                        name="email"
+                        placeholder="your.email@example.com" 
+                        class="newsletter-input"
+                        required
+                    >
+                    <input type="hidden" name="subject" value="Newsletter Subscription Request">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+                
+                <p style="text-align: center; margin-top: var(--space-lg); font-size: 0.9rem; color: var(--stone-gray);">
+                    No spam, just thoughtful insights. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Brandon Nieves</p>
+                <div class="footer-links">
+                    <a href="about/" class="footer-link">About</a>
+                    <a href="../" class="footer-link">Family</a>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="../assets/js/main.js" type="module" defer></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.slide-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

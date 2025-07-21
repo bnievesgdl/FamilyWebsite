@@ -4,91 +4,416 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Just setting this up! - Brandon Nieves Blog">
-    <meta name="theme-color" content="#1A3D36">
+    <meta name="theme-color" content="#8B4513">
     
     <title>Just setting this up! | Brandon Nieves</title>
     
-    <!-- Preconnect to Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../../assets/css/design-system.css">
-    <link rel="stylesheet" href="../../../assets/css/utility-classes.css">
-    <link rel="stylesheet" href="../../../assets/css/mobile-enhancements.css">
-    <link rel="stylesheet" href="../../../assets/css/bio-animations.css">
+    <style>
+        :root {
+            /* Aztec-Inspired Palette */
+            --obsidian-black: #1c1c1e;
+            --stone-gray: #2c2c2e;
+            --terracotta: #d2691e;
+            --gold-accent: #daa520;
+            --warm-white: #faf9f7;
+            --sage-green: #87a96b;
+            --burnt-orange: #cc5500;
+            --deep-bronze: #8b4513;
+            --limestone: #f5f5dc;
+            --shadow-brown: #3e2723;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Crimson Text', Georgia, serif;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.5rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--warm-white);
+            color: var(--obsidian-black);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        /* Aztec Step Pattern */
+        .step-pattern {
+            background: linear-gradient(
+                to right,
+                var(--terracotta) 0%,
+                var(--terracotta) 10%,
+                var(--gold-accent) 10%,
+                var(--gold-accent) 20%,
+                var(--terracotta) 20%,
+                var(--terracotta) 30%,
+                var(--gold-accent) 30%,
+                var(--gold-accent) 40%,
+                var(--terracotta) 40%,
+                var(--terracotta) 50%,
+                var(--gold-accent) 50%,
+                var(--gold-accent) 60%,
+                var(--terracotta) 60%,
+                var(--terracotta) 70%,
+                var(--gold-accent) 70%,
+                var(--gold-accent) 80%,
+                var(--terracotta) 80%,
+                var(--terracotta) 90%,
+                var(--gold-accent) 90%,
+                var(--gold-accent) 100%
+            );
+            height: 4px;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--limestone);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+        }
+        
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--deep-bronze);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .nav-logo:hover {
+            color: var(--terracotta);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+        }
+        
+        .nav-link {
+            color: var(--obsidian-black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            color: var(--terracotta);
+        }
+        
+        /* Article Header */
+        .article-header {
+            padding: var(--space-3xl) 0 var(--space-2xl);
+            background: linear-gradient(135deg, var(--limestone) 0%, var(--warm-white) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400"><defs><pattern id="aztec" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><polygon points="20,0 40,20 20,40 0,20" fill="%23d2691e" opacity="0.05"/><polygon points="10,10 30,10 30,30 10,30" fill="%23daa520" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23aztec)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .article-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--step-pattern);
+        }
+        
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            color: var(--obsidian-black);
+            margin-bottom: var(--space-lg);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            color: var(--stone-gray);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .article-meta span {
+            color: var(--terracotta);
+        }
+        
+        /* Article Content */
+        .article-content {
+            padding: var(--space-3xl) 0;
+            background: var(--warm-white);
+        }
+        
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--stone-gray);
+        }
+        
+        .article-body p {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .article-body p:first-child {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--obsidian-black);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        /* Related Posts Section */
+        .related-section {
+            padding: var(--space-3xl) 0;
+            background: var(--limestone);
+            border-top: 1px solid var(--terracotta);
+        }
+        
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--obsidian-black);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--terracotta);
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--terracotta);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-medium);
+            margin: 0 auto;
+            display: block;
+            width: fit-content;
+        }
+        
+        .back-to-blog:hover {
+            background: var(--deep-bronze);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--obsidian-black);
+            color: var(--warm-white);
+            padding: var(--space-2xl) 0 var(--space-xl);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--step-pattern);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+        
+        .footer-link {
+            color: var(--warm-white);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-link:hover {
+            color: var(--terracotta);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: var(--space-lg);
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
     
-    <!-- Favicon and Apple touch icon -->
+    <!-- Favicon -->
     <link rel="icon" href="../../../assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="../../../assets/images/apple-touch-icon.png">
 </head>
 <body>
-    <!-- Sticky Header -->
-    <header class="header sticky top-0 bg-albumen-white z-50 border-b border-chlorophyll-light" style="height: 56px;">
-        <nav class="container flex items-center justify-between h-full">
-            <a href="../../" class="flex items-center gap-sm text-chlorophyll-dark hover:text-cytoplasm-blue transition-colors" aria-label="Back to Brandon's page">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../" class="nav-logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19L5 12L12 5"/>
                 </svg>
-                <span class="font-medium">Brandon Nieves</span>
+                Brandon Nieves
             </a>
-            
-            <div class="flex items-center gap-md">
-                <a href="../../about/" class="text-sm text-chlorophyll-dark hover:text-cytoplasm-blue transition-colors">About</a>
-                <a href="../../../" class="text-sm text-chlorophyll-dark hover:text-cytoplasm-blue transition-colors">Family</a>
+            <div class="nav-links">
+                <a href="../../about/" class="nav-link">About</a>
+                <a href="../../../" class="nav-link">Family</a>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Article Header -->
-        <section class="section bg-chlorophyll-light">
-            <div class="container max-w-4xl m-auto text-center">
-                <h1 class="font-bold text-chlorophyll-dark mb-md">Just setting this up!</h1>
-                
-                <div class="flex items-center justify-center gap-md text-sm text-chlorophyll-dark">
-                    <span>Brandon Nieves</span>
-                    <span>•</span>
-                    <time>December 20, 2024</time>
-                </div>
-            </div>
-        </section>
-
-        <!-- Article Content -->
-        <article class="section">
-            <div class="container max-w-3xl m-auto">
-                <div class="prose prose-lg text-center">
-                    <p class="text-lg text-chlorophyll-dark leading-relaxed mb-lg">
-                        Just setting this up!
-                    </p>
-                    <p class="text-chlorophyll-dark leading-relaxed">
-                        I'll be posting about things I'm learning that I find interesting. Expect posts about biotech research, real estate observations, tech insights, and whatever else catches my curiosity.
-                    </p>
-                </div>
-            </div>
-        </article>
-    </main>
-
-    <footer class="bg-chlorophyll-dark text-albumen-white">
+        </div>
+    </nav>
+    
+    <!-- Article Header -->
+    <section class="article-header">
         <div class="container">
-            <div class="flex flex-col md:flex-row justify-between items-center py-lg gap-md">
-                <div>
-                    <p class="text-sm m-0">&copy; 2024 Brandon Nieves</p>
-                </div>
-                <div class="flex gap-lg">
-                    <a href="../../" class="text-sm text-albumen-white hover:text-cytoplasm-blue transition-colors">
-                        ← Back to Blog
-                    </a>
-                    <a href="../../../" class="text-sm text-albumen-white hover:text-cytoplasm-blue transition-colors">
-                        Family
-                    </a>
+            <h1 class="article-title fade-in">Just setting this up!</h1>
+            <div class="article-meta fade-in fade-in-delay-1">
+                <span>Brandon Nieves</span>
+                <span>•</span>
+                <time>December 20, 2024</time>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Article Content -->
+    <main class="article-content">
+        <div class="container">
+            <article class="article-body fade-in fade-in-delay-2">
+                <p>Just setting this up!</p>
+                <p>
+                    I'll be posting about things I'm learning that I find interesting. Expect posts about biotech research, 
+                    real estate observations, tech insights, and whatever else catches my curiosity.
+                </p>
+            </article>
+        </div>
+    </main>
+    
+    <!-- Related/Back Section -->
+    <section class="related-section">
+        <div class="container">
+            <h2 class="section-title">More Posts</h2>
+            <a href="../../" class="back-to-blog">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19L5 12L12 5"/>
+                </svg>
+                Back to Blog
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Brandon Nieves</p>
+                <div class="footer-links">
+                    <a href="../../" class="footer-link">Blog</a>
+                    <a href="../../about/" class="footer-link">About</a>
+                    <a href="../../../" class="footer-link">Family</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="../../../assets/js/main.js" type="module" defer></script>
 </body>
 </html>
