@@ -3,129 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Angel Guadalajara - Visual Artist & Creative Professional">
-    <meta name="theme-color" content="#FF7568">
+    <meta name="description" content="Angel Guadalajara - Fine Art Photography • Matrix Minimalism">
+    <meta name="theme-color" content="#000000">
     
-    <title>Angel Guadalajara | Portfolio</title>
+    <title>Angel Guadalajara</title>
     
-    <!-- Preconnect to Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/css/design-system.css">
-    <link rel="stylesheet" href="../assets/css/utility-classes.css">
-    <link rel="stylesheet" href="../assets/css/mobile-enhancements.css">
-    <link rel="stylesheet" href="../assets/css/bio-animations.css">
     <style>
-        /* Portfolio-specific styles */
-        .hero-image {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--nucleus-coral) 0%, var(--cytoplasm-blue) 100%);
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        :root {
+            /* Matrix Palette */
+            --void-black: #000000;
+            --deep-charcoal: #0a0a0a;
+            --matrix-green: #00ff41;
+            --ghost-white: #f8f8f8;
+            --silver-mist: #c0c0c0;
+            --shadow-gray: #1a1a1a;
+            --electric-lime: #39ff14;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            --space-2xl: 8rem;
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.6s ease;
         }
         
-        .overlay {
-            background: linear-gradient(45deg, rgba(26, 61, 54, 0.3), rgba(255, 117, 104, 0.2));
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .hamburger {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            position: relative;
-            z-index: 60;
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--void-black);
+            color: var(--ghost-white);
+            line-height: 1.4;
+            overflow-x: hidden;
+            font-weight: 200;
         }
         
-        .hamburger span {
-            display: block;
-            height: 2px;
+        /* Typography */
+        .mono {
+            font-family: var(--font-mono);
+            font-weight: 300;
+        }
+        
+        .weight-100 { font-weight: 100; }
+        .weight-200 { font-weight: 200; }
+        .weight-300 { font-weight: 300; }
+        .weight-400 { font-weight: 400; }
+        .weight-500 { font-weight: 500; }
+        .weight-600 { font-weight: 600; }
+        .weight-700 { font-weight: 700; }
+        
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Matrix Effect */
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            background: var(--albumen-white);
-            margin: 5px 0;
-            transition: all 0.3s ease;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
         
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+        .matrix-line {
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--matrix-green), transparent);
+            animation: matrix-fall linear infinite;
         }
         
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
+        @keyframes matrix-fall {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
         
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-        
-        .mobile-menu {
+        /* Navigation */
+        .nav {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: var(--chlorophyll-dark);
-            padding: 4rem 2rem 2rem;
-            transition: right 0.3s ease;
-            z-index: 50;
-        }
-        
-        .mobile-menu.active {
+            left: 0;
             right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--shadow-gray);
         }
         
-        .gallery {
-            column-count: 1;
-            column-gap: var(--space-lg);
-            break-inside: avoid;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
         }
         
-        @media (min-width: 640px) {
-            .gallery {
-                column-count: 2;
-            }
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--matrix-green);
+            text-decoration: none;
+            transition: var(--transition-fast);
         }
         
-        @media (min-width: 768px) {
-            .gallery {
-                column-count: 3;
-            }
+        .nav-logo:hover {
+            color: var(--electric-lime);
         }
         
-        @media (min-width: 1024px) {
-            .gallery {
-                column-count: 4;
-            }
+        .nav-menu {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--silver-mist);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--matrix-green);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--matrix-green);
+            transition: var(--transition-medium);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--void-black) 0%, var(--deep-charcoal) 100%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 100;
+            letter-spacing: 0.02em;
+            margin-bottom: var(--space-md);
+            color: var(--ghost-white);
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            font-weight: 300;
+            color: var(--matrix-green);
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            font-weight: 200;
+            color: var(--silver-mist);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.6;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: var(--space-md) var(--space-lg);
+            background: transparent;
+            border: 1px solid var(--matrix-green);
+            color: var(--matrix-green);
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--matrix-green);
+            transition: var(--transition-medium);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            color: var(--void-black);
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            padding: var(--space-2xl) 0;
+            background: var(--deep-charcoal);
+        }
+        
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            color: var(--matrix-green);
+            letter-spacing: 0.1em;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+            background: var(--void-black);
+            padding: 2px;
         }
         
         .gallery-item {
-            break-inside: avoid;
-            margin-bottom: var(--space-lg);
+            aspect-ratio: 4/5;
+            background: var(--shadow-gray);
             position: relative;
             overflow: hidden;
-            border-radius: var(--radius-lg);
             cursor: pointer;
-            transition: all var(--transition-normal);
+            transition: var(--transition-medium);
         }
         
         .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            transform: scale(1.02);
         }
         
         .gallery-item img {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: transform var(--transition-normal);
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: var(--transition-medium);
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            filter: grayscale(0%) contrast(1.1);
         }
         
         .gallery-overlay {
@@ -134,9 +317,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(26, 61, 54, 0.8) 100%);
+            background: linear-gradient(
+                135deg,
+                rgba(0, 255, 65, 0.1) 0%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
             opacity: 0;
-            transition: opacity var(--transition-normal);
+            transition: var(--transition-medium);
             display: flex;
             align-items: flex-end;
             padding: var(--space-lg);
@@ -146,18 +333,163 @@
             opacity: 1;
         }
         
+        .gallery-info {
+            color: var(--ghost-white);
+        }
+        
+        .gallery-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: var(--space-xs);
+            color: var(--matrix-green);
+        }
+        
+        .gallery-meta {
+            font-size: 0.8rem;
+            font-weight: 200;
+            color: var(--silver-mist);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: var(--space-2xl) 0;
+            background: var(--void-black);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
+        .about-image {
+            aspect-ratio: 1;
+            background: var(--shadow-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid var(--matrix-green);
+            z-index: 2;
+        }
+        
+        .about-content h2 {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--matrix-green);
+            margin-bottom: var(--space-lg);
+            letter-spacing: 0.05em;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            font-weight: 200;
+            line-height: 1.7;
+            color: var(--silver-mist);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+        }
+        
+        .skills-list li {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ghost-white);
+            padding: var(--space-sm);
+            background: var(--shadow-gray);
+            border-left: 2px solid var(--matrix-green);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: var(--space-2xl) 0;
+            background: var(--deep-charcoal);
+            border-top: 1px solid var(--shadow-gray);
+        }
+        
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-email {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--matrix-green);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: var(--transition-fast);
+        }
+        
+        .contact-email:hover {
+            color: var(--electric-lime);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: var(--space-lg) 0;
+            background: var(--void-black);
+            border-top: 1px solid var(--shadow-gray);
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 200;
+            color: var(--silver-mist);
+        }
+        
+        .footer-link {
+            color: var(--silver-mist);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-link:hover {
+            color: var(--matrix-green);
+        }
+        
+        /* Lightbox */
         .lightbox {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 100;
-            padding: var(--space-lg);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
         }
         
         .lightbox.active {
@@ -174,43 +506,45 @@
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
-            border-radius: var(--radius-md);
+            filter: grayscale(0%) contrast(1.1);
         }
         
         .lightbox-close {
             position: absolute;
             top: -40px;
             right: 0;
-            color: var(--albumen-white);
+            color: var(--ghost-white);
             font-size: 2rem;
             cursor: pointer;
-            z-index: 101;
+            font-family: var(--font-mono);
+            transition: var(--transition-fast);
+        }
+        
+        .lightbox-close:hover {
+            color: var(--matrix-green);
         }
         
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--albumen-white);
+            color: var(--ghost-white);
             font-size: 2rem;
             cursor: pointer;
-            background: rgba(26, 61, 54, 0.7);
-            padding: var(--space-sm);
-            border-radius: var(--radius-md);
-            transition: background var(--transition-fast);
+            font-family: var(--font-mono);
+            background: rgba(0, 0, 0, 0.7);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--matrix-green);
+            transition: var(--transition-fast);
         }
         
         .lightbox-nav:hover {
-            background: rgba(26, 61, 54, 0.9);
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--matrix-green);
         }
         
-        .lightbox-prev {
-            left: -60px;
-        }
-        
-        .lightbox-next {
-            right: -60px;
-        }
+        .lightbox-prev { left: -80px; }
+        .lightbox-next { right: -80px; }
         
         @media (max-width: 768px) {
             .lightbox-nav {
@@ -218,343 +552,213 @@
                 top: auto;
                 bottom: 2rem;
             }
+            .lightbox-prev { left: 2rem; }
+            .lightbox-next { right: 2rem; }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ghost-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
             
-            .lightbox-prev {
-                left: 2rem;
-            }
-            
-            .lightbox-next {
-                right: 2rem;
+            .nav-menu.active {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                padding: var(--space-lg);
+                gap: var(--space-lg);
+                border-top: 1px solid var(--shadow-gray);
             }
         }
     </style>
     
-    <!-- Favicon and Apple touch icon -->
+    <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
 </head>
 <body>
-    <!-- Hero Section with Overlay Navigation -->
-    <section class="hero-image relative">
-        <div class="overlay absolute inset-0"></div>
-        
-        <!-- Navigation Overlay -->
-        <nav class="absolute top-0 left-0 right-0 z-40 p-lg">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <a href="../" class="text-albumen-white text-xl font-bold hover:text-cytoplasm-blue transition-colors">
-                    AG
-                </a>
-                
-                <!-- Hamburger Menu -->
-                <button class="hamburger touch-target" aria-label="Toggle menu" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <nav class="flex flex-col gap-lg">
-                <a href="#gallery" class="text-albumen-white text-lg hover:text-cytoplasm-blue transition-colors">Gallery</a>
-                <a href="#about" class="text-albumen-white text-lg hover:text-cytoplasm-blue transition-colors">About</a>
-                <a href="#contact" class="text-albumen-white text-lg hover:text-cytoplasm-blue transition-colors">Contact</a>
-                <hr class="border-chlorophyll-light">
-                <a href="../" class="text-albumen-white text-sm hover:text-cytoplasm-blue transition-colors">← Family Home</a>
-            </nav>
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">AG</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#gallery" class="nav-link">WORK</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
-        
-        <!-- Hero Content -->
-        <div class="absolute inset-0 flex items-center justify-center text-center z-10">
-            <div class="container">
-                <h1 class="text-albumen-white font-bold mb-md animate-fade-in">
-                    Angel Guadalajara
-                </h1>
-                <p class="text-xl text-albumen-white mb-lg font-light" style="animation-delay: 0.2s;">
-                    Visual Artist & Creative Professional
-                </p>
-                <p class="text-lg text-albumen-white mb-xl leading-relaxed max-w-2xl m-auto" style="animation-delay: 0.4s;">
-                    Capturing moments through the lens of contemporary photography and digital artistry
-                </p>
-                <a href="#gallery" class="btn btn-primary animate-fade-in" style="animation-delay: 0.6s;">
-                    Explore Gallery
-                </a>
-            </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-            <div class="w-6 h-10 border-2 border-albumen-white rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-albumen-white rounded-full mt-2 animate-bounce"></div>
-            </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">ANGEL GUADALAJARA</h1>
+            <p class="hero-subtitle fade-in fade-in-delay-1">FINE ART PHOTOGRAPHY</p>
+            <p class="hero-description fade-in fade-in-delay-2">
+                Exploring the intersection of light, shadow, and form through minimal compositions 
+                that challenge perception and embrace the void between presence and absence.
+            </p>
+            <a href="#gallery" class="btn fade-in fade-in-delay-3">VIEW WORK</a>
         </div>
     </section>
-
+    
     <!-- Gallery Section -->
-    <section id="gallery" class="section">
+    <section class="gallery-section" id="gallery">
         <div class="container">
-            <h2 class="text-center mb-2xl text-chlorophyll-dark">Portfolio Gallery</h2>
-            
-            <div class="gallery" id="galleryContainer">
-                <!-- Gallery items will be dynamically populated -->
-                <div class="gallery-item" data-src="https://picsum.photos/400/600?random=1">
-                    <img src="https://picsum.photos/400/600?random=1" alt="Contemporary Art Piece 1" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Urban Reflections</h3>
-                            <p class="text-sm">Digital Photography, 2024</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/800?random=2">
-                    <img src="https://picsum.photos/400/800?random=2" alt="Contemporary Art Piece 2" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Abstract Emotions</h3>
-                            <p class="text-sm">Mixed Media, 2024</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/500?random=3">
-                    <img src="https://picsum.photos/400/500?random=3" alt="Contemporary Art Piece 3" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Nature's Geometry</h3>
-                            <p class="text-sm">Photography, 2024</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/700?random=4">
-                    <img src="https://picsum.photos/400/700?random=4" alt="Contemporary Art Piece 4" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Cultural Synthesis</h3>
-                            <p class="text-sm">Digital Art, 2024</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/900?random=5">
-                    <img src="https://picsum.photos/400/900?random=5" alt="Contemporary Art Piece 5" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Light Studies</h3>
-                            <p class="text-sm">Photography, 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/450?random=6">
-                    <img src="https://picsum.photos/400/450?random=6" alt="Contemporary Art Piece 6" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Minimalist Forms</h3>
-                            <p class="text-sm">Composition, 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/650?random=7">
-                    <img src="https://picsum.photos/400/650?random=7" alt="Contemporary Art Piece 7" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Color Theory</h3>
-                            <p class="text-sm">Digital Art, 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-src="https://picsum.photos/400/550?random=8">
-                    <img src="https://picsum.photos/400/550?random=8" alt="Contemporary Art Piece 8" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="text-albumen-white">
-                            <h3 class="font-semibold">Portrait Series</h3>
-                            <p class="text-sm">Photography, 2023</p>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="section-title">SELECTED WORKS</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be populated by JavaScript -->
             </div>
         </div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" class="section section-bg">
+    <section class="about-section" id="about">
         <div class="container">
-            <div class="grid gap-2xl grid-md-2 max-w-6xl m-auto items-center">
-                <!-- Profile Image -->
-                <div class="text-center">
-                    <div class="w-64 h-64 rounded-full bg-gradient-to-br from-nucleus-coral to-cytoplasm-blue m-auto mb-lg flex items-center justify-center text-6xl font-bold text-albumen-white membrane-glow">
-                        AG
-                    </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(45deg, var(--void-black), var(--shadow-gray)); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 3rem; color: var(--matrix-green); font-weight: 100;">AG</div>
                 </div>
-                
-                <!-- About Content -->
-                <div>
-                    <h2 class="text-chlorophyll-dark mb-xl">About Angel</h2>
-                    <div class="prose prose-lg">
-                        <p class="text-chlorophyll-dark leading-relaxed mb-lg">
-                            As a visual artist and creative professional, I explore the intersection of 
-                            traditional photography and contemporary digital art. My work focuses on 
-                            capturing the essence of human experience through innovative visual narratives.
-                        </p>
-                        
-                        <p class="text-chlorophyll-dark leading-relaxed mb-lg">
-                            My artistic journey is driven by a passion for storytelling through imagery, 
-                            whether it's documenting cultural moments, exploring abstract concepts, or 
-                            creating compelling visual compositions that resonate with diverse audiences.
-                        </p>
-                        
-                        <h3 class="text-chlorophyll-dark mb-md">Artistic Focus</h3>
-                        <ul class="text-chlorophyll-dark space-y-2">
-                            <li>• Contemporary Photography</li>
-                            <li>• Digital Art & Composition</li>
-                            <li>• Cultural Documentation</li>
-                            <li>• Abstract Visual Narratives</li>
-                            <li>• Portrait & Lifestyle Photography</li>
-                            <li>• Mixed Media Exploration</li>
-                        </ul>
-                    </div>
+                <div class="about-content">
+                    <h2>ARTIST STATEMENT</h2>
+                    <p>
+                        My work exists in the liminal space between presence and absence, exploring 
+                        the architectural qualities of light and the sculptural nature of shadow. 
+                        Through minimal compositions, I seek to distill reality to its essential forms.
+                    </p>
+                    <p>
+                        Each photograph is an investigation into the tension between the seen and unseen, 
+                        the constructed and the natural, drawing inspiration from brutalist architecture 
+                        and the philosophical frameworks of negative space.
+                    </p>
+                    <ul class="skills-list">
+                        <li>DIGITAL PHOTOGRAPHY</li>
+                        <li>ANALOG PROCESSES</li>
+                        <li>ARCHITECTURAL FORMS</li>
+                        <li>LIGHT STUDIES</li>
+                        <li>MINIMAL COMPOSITION</li>
+                        <li>CONCEPTUAL ART</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section class="contact-section" id="contact">
         <div class="container">
-            <div class="max-w-4xl m-auto">
-                <h2 class="text-center mb-2xl text-chlorophyll-dark">Get In Touch</h2>
-                
-                <div class="grid gap-xl grid-md-2">
-                    <!-- Contact Info -->
-                    <div>
-                        <h3 class="text-chlorophyll-dark mb-lg">Let's Create Together</h3>
-                        <p class="text-chlorophyll-dark leading-relaxed mb-lg">
-                            Whether you're interested in commissioning artwork, collaborating on a project, 
-                            or simply want to discuss creative ideas, I'd love to hear from you.
-                        </p>
-                        
-                        <div class="space-y-md">
-                            <div class="flex items-center gap-md">
-                                <div class="w-12 h-12 rounded-full bg-cytoplasm-blue flex items-center justify-center">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                                        <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" fill="none"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-chlorophyll-dark font-medium">Email</p>
-                                    <a href="mailto:angel@guadalajara.art" class="text-cytoplasm-blue hover:text-nucleus-coral">
-                                        angel@guadalajara.art
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-md">
-                                <div class="w-12 h-12 rounded-full bg-nucleus-coral flex items-center justify-center">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
-                                        <path d="M8 21L12 17L16 21" stroke="currentColor" stroke-width="2" fill="none"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-chlorophyll-dark font-medium">Portfolio</p>
-                                    <a href="https://angel.guadalajara.art" class="text-cytoplasm-blue hover:text-nucleus-coral">
-                                        angel.guadalajara.art
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Form -->
-                    <div class="card">
-                        <form action="mailto:angel@guadalajara.art" method="post" enctype="text/plain" class="space-y-lg">
-                            <div>
-                                <label for="name" class="block text-chlorophyll-dark font-medium mb-sm">Name</label>
-                                <input type="text" id="name" name="name" required 
-                                       class="w-full p-md border border-chlorophyll-light rounded focus:border-cytoplasm-blue focus:outline-none">
-                            </div>
-                            
-                            <div>
-                                <label for="email" class="block text-chlorophyll-dark font-medium mb-sm">Email</label>
-                                <input type="email" id="email" name="email" required 
-                                       class="w-full p-md border border-chlorophyll-light rounded focus:border-cytoplasm-blue focus:outline-none">
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-chlorophyll-dark font-medium mb-sm">Subject</label>
-                                <input type="text" id="subject" name="subject" required 
-                                       class="w-full p-md border border-chlorophyll-light rounded focus:border-cytoplasm-blue focus:outline-none">
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-chlorophyll-dark font-medium mb-sm">Message</label>
-                                <textarea id="message" name="message" rows="5" required 
-                                          class="w-full p-md border border-chlorophyll-light rounded focus:border-cytoplasm-blue focus:outline-none resize-vertical"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary w-full">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <div class="contact-content">
+                <h2 class="section-title">CONTACT</h2>
+                <p style="color: var(--silver-mist); margin-bottom: var(--space-lg); font-weight: 200;">
+                    For inquiries, collaborations, or print sales
+                </p>
+                <a href="mailto:angel@nievesgdl.com" class="contact-email">ANGEL@NIEVESGDL.COM</a>
             </div>
         </div>
     </section>
-
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 ANGEL GUADALAJARA</p>
+                <a href="../" class="footer-link">← FAMILY</a>
+            </div>
+        </div>
+    </footer>
+    
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
-            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <span class="lightbox-close" id="lightboxClose">×</span>
             <span class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</span>
             <span class="lightbox-nav lightbox-next" id="lightboxNext">›</span>
             <img src="" alt="" id="lightboxImage">
         </div>
     </div>
-
-    <footer class="bg-chlorophyll-dark text-albumen-white">
-        <div class="container">
-            <div class="flex flex-col md:flex-row justify-between items-center py-lg gap-md">
-                <div>
-                    <p class="text-sm m-0">&copy; 2024 Angel Guadalajara</p>
-                </div>
-                <div>
-                    <a href="../" class="text-sm text-albumen-white hover:text-cytoplasm-blue transition-colors">
-                        ← Back to Family
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="../assets/js/main.js" type="module" defer></script>
     
-    <!-- Portfolio-specific JavaScript -->
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // Matrix background effect
+        function createMatrix() {
+            const matrixBg = document.getElementById('matrixBg');
+            const lineCount = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.className = 'matrix-line';
+                line.style.left = Math.random() * 100 + '%';
+                line.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                line.style.animationDelay = Math.random() * 2 + 's';
+                line.style.height = Math.random() * 200 + 100 + 'px';
+                matrixBg.appendChild(line);
+            }
+        }
         
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
+        // Gallery data
+        const galleryItems = [
+            { src: 'https://picsum.photos/400/500?random=1&grayscale', title: 'VOID_01', meta: 'SILVER GELATIN, 2024' },
+            { src: 'https://picsum.photos/400/600?random=2&grayscale', title: 'STRUCTURE_II', meta: 'DIGITAL, 2024' },
+            { src: 'https://picsum.photos/400/450?random=3&grayscale', title: 'ABSENCE_III', meta: 'ANALOG, 2024' },
+            { src: 'https://picsum.photos/400/700?random=4&grayscale', title: 'NEGATIVE_SPACE', meta: 'MIXED MEDIA, 2024' },
+            { src: 'https://picsum.photos/400/550?random=5&grayscale', title: 'BRUTALIST_FORMS', meta: 'DIGITAL, 2023' },
+            { src: 'https://picsum.photos/400/650?random=6&grayscale', title: 'LIGHT_STUDY_I', meta: 'SILVER GELATIN, 2023' },
+            { src: 'https://picsum.photos/400/480?random=7&grayscale', title: 'MINIMAL_CONSTRUCT', meta: 'DIGITAL, 2023' },
+            { src: 'https://picsum.photos/400/580?random=8&grayscale', title: 'SHADOW_PLAY', meta: 'ANALOG, 2023' },
+            { src: 'https://picsum.photos/400/520?random=9&grayscale', title: 'ARCHITECTURAL_VOID', meta: 'DIGITAL, 2023' },
+            { src: 'https://picsum.photos/400/620?random=10&grayscale', title: 'CONCRETE_POETRY', meta: 'MIXED MEDIA, 2024' }
+        ];
         
-        // Close mobile menu when clicking on links
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        // Populate gallery
+        function populateGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            galleryItems.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.title}" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <div class="gallery-title">${item.title}</div>
+                            <div class="gallery-meta">${item.meta}</div>
+                        </div>
+                    </div>
+                `;
+                galleryItem.addEventListener('click', () => openLightbox(index));
+                galleryGrid.appendChild(galleryItem);
             });
-        });
+        }
         
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
@@ -562,18 +766,13 @@
         const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
-        const galleryItems = document.querySelectorAll('.gallery-item');
         
         let currentImageIndex = 0;
-        const images = Array.from(galleryItems).map(item => ({
-            src: item.dataset.src,
-            alt: item.querySelector('img').alt
-        }));
         
         function openLightbox(index) {
             currentImageIndex = index;
-            lightboxImage.src = images[index].src;
-            lightboxImage.alt = images[index].alt;
+            lightboxImage.src = galleryItems[index].src;
+            lightboxImage.alt = galleryItems[index].title;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -584,51 +783,45 @@
         }
         
         function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            lightboxImage.src = images[currentImageIndex].src;
-            lightboxImage.alt = images[currentImageIndex].alt;
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            lightboxImage.src = galleryItems[currentImageIndex].src;
+            lightboxImage.alt = galleryItems[currentImageIndex].title;
         }
         
         function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            lightboxImage.src = images[currentImageIndex].src;
-            lightboxImage.alt = images[currentImageIndex].alt;
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            lightboxImage.src = galleryItems[currentImageIndex].src;
+            lightboxImage.alt = galleryItems[currentImageIndex].title;
         }
         
         // Event listeners
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => openLightbox(index));
-        });
-        
         lightboxClose.addEventListener('click', closeLightbox);
         lightboxNext.addEventListener('click', nextImage);
         lightboxPrev.addEventListener('click', prevImage);
         
-        // Close lightbox on background click
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
+            if (e.target === lightbox) closeLightbox();
         });
         
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             
             switch (e.key) {
-                case 'Escape':
-                    closeLightbox();
-                    break;
-                case 'ArrowLeft':
-                    prevImage();
-                    break;
-                case 'ArrowRight':
-                    nextImage();
-                    break;
+                case 'Escape': closeLightbox(); break;
+                case 'ArrowLeft': prevImage(); break;
+                case 'ArrowRight': nextImage(); break;
             }
         });
         
-        // Smooth scrolling for navigation links
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -641,6 +834,21 @@
                 }
             });
         });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createMatrix();
+            populateGallery();
+        });
+        
+        // Cleanup matrix lines periodically
+        setInterval(() => {
+            const matrixBg = document.getElementById('matrixBg');
+            if (matrixBg.children.length > 50) {
+                matrixBg.innerHTML = '';
+                createMatrix();
+            }
+        }, 30000);
     </script>
 </body>
 </html>
